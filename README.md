@@ -1,25 +1,121 @@
-🎓 Sistema de Contratação de Docentes
+# Sistema de Contratação de Docente
 
-Projeto desenvolvido em Java com JavaFX com foco em organização de código, lógica de negócio e estruturas de dados, simulando um sistema real de contratação temporária de docentes para uma instituição de ensino.
+Aplicação desenvolvida em **Java com JavaFX**, simulando um sistema real de **gestão de contratação temporária de docentes** em uma instituição de ensino superior.  
+O projeto demonstra domínio de **Programação Orientada a Objetos**, **estruturas de dados**, **organização em camadas** e **persistência de dados em arquivos CSV**.
 
-A aplicação implementa CRUD completo para cursos, disciplinas, professores e inscrições, com persistência em arquivos CSV, reforçando conhecimentos em manipulação de arquivos, modelagem de dados e separação de responsabilidades.
+---
 
-O sistema também contempla consultas e ordenações eficientes, utilizando o algoritmo QuickSort para classificar candidatos por pontuação, evidenciando domínio de algoritmos e estruturas de dados.
+## 📌 Funcionalidades
 
-O projeto foi estruturado em camadas bem definidas (model, view, persistence e util), seguindo princípios de manutenibilidade, legibilidade e escalabilidade, além de utilizar estruturas auxiliares como listas e tabelas hash.
+### 🔧 CRUD Completo
+- **Cursos**: Cadastro, busca, atualização e remoção  
+- **Disciplinas**: Gerenciamento de disciplinas vinculadas a cursos  
+- **Professores**: Cadastro de docentes com pontuação classificatória  
+- **Inscrições**: Controle de inscrições em processos seletivos  
 
-🚀 Competências demonstradas
+### 🔍 Consultas Estratégicas
+- **Consulta de Inscritos**: Lista professores inscritos por disciplina, ordenados por pontuação utilizando **QuickSort**  
+- **Processos Abertos**: Exibe disciplinas com processos seletivos ativos usando **HashTable**  
 
-Programação orientada a objetos em Java
+---
 
-Desenvolvimento de interfaces gráficas com JavaFX
+## 📁 Estrutura do Projeto
 
-Implementação de CRUD e regras de negócio
+```text
+/contratacao-docente
+├── csv/
+│   ├── disciplinas.csv
+│   ├── cursos.csv
+│   ├── professores.csv
+│   └── inscricoes.csv
+│
+├── doc/
+│   └── diagrama.png
+│
+├── lib/
+│   ├── ListaSimples.jar
+│   ├── Fila.jar
+│   └── HashTable.jar
+│
+├── src/
+│   ├── application/
+│   │   └── MainApp.java
+│   │
+│   ├── controller/
+│   │   ├── CursoController.java
+│   │   ├── DisciplinaController.java
+│   │   ├── ProfessorController.java
+│   │   └── InscricaoController.java
+│   │
+│   ├── persistence/
+│   │   ├── CursoRepository.java
+│   │   ├── DisciplinaRepository.java
+│   │   ├── ProfessorRepository.java
+│   │   └── InscricaoRepository.java
+│   │
+│   ├── model/
+│   │   ├── Curso.java
+│   │   ├── Disciplina.java
+│   │   ├── Professor.java
+│   │   └── Inscricao.java
+│   │
+│   ├── view/
+│   │   ├── CursoView.java
+│   │   ├── DisciplinaView.java
+│   │   ├── ProfessorView.java
+│   │   ├── InscricaoView.java
+│   │   ├── ConsultaInscritos.java
+│   │   └── ConsultaProcessosAbertos.java
+│   │
+│   └── util/
+│       └── QuickSort.java
+```
 
-Uso de algoritmos de ordenação e estruturas de dados
+---
 
-Persistência de dados com arquivos CSV
+## 🧩 Regras de Negócio
 
-Organização de projetos e boas práticas de código
+1. Apenas professores previamente cadastrados podem realizar inscrições  
+2. A remoção de uma disciplina exclui automaticamente todas as inscrições relacionadas  
+3. Operações de atualização e remoção utilizam **listas encadeadas**  
+4. Consultas de dados utilizam **filas** carregadas a partir dos arquivos CSV  
+5. Os arquivos CSV são mantidos consistentes, sem linhas vazias após operações  
 
-Este projeto demonstra capacidade de resolver problemas reais, estruturar aplicações de médio porte e aplicar conceitos fundamentais exigidos no desenvolvimento de software profissional.
+---
+
+## 📚 Estruturas de Dados Utilizadas
+
+- Lista Simples Encadeada  
+- Fila  
+- QuickSort  
+- HashTable  
+
+---
+
+## ▶️ Como Executar
+
+1. Verifique se as bibliotecas estão disponíveis na pasta `lib/`  
+2. Adicione as bibliotecas ao **Build Path** do projeto  
+3. Execute a classe **MainApp.java**  
+
+---
+
+## 🏗️ Arquitetura
+
+O sistema segue um **MVC bem definido**, facilitando manutenção e escalabilidade:
+
+- **Model**: Entidades de domínio  
+- **View**: Interface gráfica desenvolvida em JavaFX  
+- **Controller**: Regras de negócio e fluxo da aplicação  
+- **Persistence**: Repositórios responsáveis pelo acesso aos arquivos CSV  
+
+---
+
+## ⚙️ Observações Técnicas
+
+- Arquivos CSV criados automaticamente na pasta `csv/`  
+- Separador CSV: `;`  
+- Quebra de linha: `\r\n`  
+- Mensagens de erro tratadas com `AlertDialog`  
+- Resultados de consultas exibidos em `TextArea`  
+- Campos de entrada são limpos após cada operação  
