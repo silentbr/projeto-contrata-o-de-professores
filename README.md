@@ -1,121 +1,87 @@
-# Sistema de Contratação de Docente
+# Gestão de Processos Seletivos para Docentes
 
-Aplicação desenvolvida em **Java com JavaFX**, simulando um sistema real de **gestão de contratação temporária de docentes** em uma instituição de ensino superior.  
-O projeto demonstra domínio de **Programação Orientada a Objetos**, **estruturas de dados**, **organização em camadas** e **persistência de dados em arquivos CSV**.
+Aplicação **desktop desenvolvida em Java com JavaFX**, criada para simular a gestão de **processos seletivos de professores temporários** em um contexto acadêmico.
 
----
-
-## 📌 Funcionalidades
-
-### 🔧 CRUD Completo
-- **Cursos**: Cadastro, busca, atualização e remoção  
-- **Disciplinas**: Gerenciamento de disciplinas vinculadas a cursos  
-- **Professores**: Cadastro de docentes com pontuação classificatória  
-- **Inscrições**: Controle de inscrições em processos seletivos  
-
-### 🔍 Consultas Estratégicas
-- **Consulta de Inscritos**: Lista professores inscritos por disciplina, ordenados por pontuação utilizando **QuickSort**  
-- **Processos Abertos**: Exibe disciplinas com processos seletivos ativos usando **HashTable**  
+O projeto tem como foco demonstrar habilidades práticas em **Programação Orientada a Objetos**, **estruturas de dados**, **organização de código** e **persistência de informações**, aproximando-se de cenários reais do desenvolvimento de software.
 
 ---
 
-## 📁 Estrutura do Projeto
+## 🎯 Objetivo
 
-```text
-/contratacao-docente
-├── csv/
-│   ├── disciplinas.csv
-│   ├── cursos.csv
-│   ├── professores.csv
-│   └── inscricoes.csv
-│
-├── doc/
-│   └── diagrama.png
-│
-├── lib/
-│   ├── ListaSimples.jar
-│   ├── Fila.jar
-│   └── HashTable.jar
-│
-├── src/
-│   ├── application/
-│   │   └── MainApp.java
-│   │
-│   ├── controller/
-│   │   ├── CursoController.java
-│   │   ├── DisciplinaController.java
-│   │   ├── ProfessorController.java
-│   │   └── InscricaoController.java
-│   │
-│   ├── persistence/
-│   │   ├── CursoRepository.java
-│   │   ├── DisciplinaRepository.java
-│   │   ├── ProfessorRepository.java
-│   │   └── InscricaoRepository.java
-│   │
-│   ├── model/
-│   │   ├── Curso.java
-│   │   ├── Disciplina.java
-│   │   ├── Professor.java
-│   │   └── Inscricao.java
-│   │
-│   ├── view/
-│   │   ├── CursoView.java
-│   │   ├── DisciplinaView.java
-│   │   ├── ProfessorView.java
-│   │   ├── InscricaoView.java
-│   │   ├── ConsultaInscritos.java
-│   │   └── ConsultaProcessosAbertos.java
-│   │
-│   └── util/
-│       └── QuickSort.java
-```
+Automatizar e centralizar o controle de:
+- Disciplinas ofertadas
+- Docentes candidatos
+- Inscrições em processos seletivos
+
+Garantindo integridade dos dados, consultas eficientes e facilidade de manutenção.
 
 ---
 
-## 🧩 Regras de Negócio
+## 🛠️ Funcionalidades
 
-1. Apenas professores previamente cadastrados podem realizar inscrições  
-2. A remoção de uma disciplina exclui automaticamente todas as inscrições relacionadas  
-3. Operações de atualização e remoção utilizam **listas encadeadas**  
-4. Consultas de dados utilizam **filas** carregadas a partir dos arquivos CSV  
-5. Os arquivos CSV são mantidos consistentes, sem linhas vazias após operações  
+- Gerenciamento de entidades acadêmicas (cursos, disciplinas e docentes)
+- Controle de inscrições em processos seletivos
+- Classificação de candidatos com base em pontuação
+- Consulta de processos seletivos ativos
+- Interface gráfica desenvolvida com JavaFX
+- Persistência de dados utilizando arquivos CSV
 
 ---
 
-## 📚 Estruturas de Dados Utilizadas
+## 🧠 Regras e Lógica de Negócio
 
-- Lista Simples Encadeada  
-- Fila  
-- QuickSort  
-- HashTable  
+- Apenas docentes previamente cadastrados podem se inscrever em disciplinas
+- Exclusões mantêm a consistência dos dados (remoções em cascata quando aplicável)
+- Operações de alteração utilizam estruturas encadeadas
+- Consultas são realizadas a partir de estruturas auxiliares carregadas dos arquivos
+- Os arquivos de dados permanecem consistentes após qualquer operação
+
+---
+
+## 🧮 Estruturas de Dados e Algoritmos
+
+O sistema utiliza conceitos fundamentais de Estrutura de Dados:
+
+- Listas encadeadas
+- Filas
+- Tabelas hash
+- Algoritmo de ordenação QuickSort
+
+Esses recursos foram aplicados visando desempenho, clareza e organização.
+
+---
+
+## 🧱 Organização do Projeto
+
+A aplicação segue uma estrutura inspirada no padrão **MVC**, promovendo separação de responsabilidades:
+
+- **Domínio**: entidades do sistema
+- **Controle**: regras de negócio e validações
+- **Interface**: telas e interação com o usuário
+- **Persistência**: leitura e escrita de dados em CSV
+
+Essa abordagem facilita manutenção e evolução do sistema.
 
 ---
 
 ## ▶️ Como Executar
 
-1. Verifique se as bibliotecas estão disponíveis na pasta `lib/`  
-2. Adicione as bibliotecas ao **Build Path** do projeto  
-3. Execute a classe **MainApp.java**  
+1. Importe o projeto em uma IDE compatível com Java
+2. Adicione as bibliotecas auxiliares ao classpath
+3. Execute a classe principal da aplicação
+
+Os arquivos CSV são gerados automaticamente na primeira execução.
 
 ---
 
-## 🏗️ Arquitetura
+## 💡 Observações Técnicas
 
-O sistema segue um **MVC bem definido**, facilitando manutenção e escalabilidade:
-
-- **Model**: Entidades de domínio  
-- **View**: Interface gráfica desenvolvida em JavaFX  
-- **Controller**: Regras de negócio e fluxo da aplicação  
-- **Persistence**: Repositórios responsáveis pelo acesso aos arquivos CSV  
+- Interface gráfica construída com JavaFX
+- Armazenamento local de dados em formato CSV
+- Tratamento de erros com feedback visual ao usuário
+- Atualização automática da interface após operações
+- Código organizado com foco em legibilidade e boas práticas
 
 ---
 
-## ⚙️ Observações Técnicas
-
-- Arquivos CSV criados automaticamente na pasta `csv/`  
-- Separador CSV: `;`  
-- Quebra de linha: `\r\n`  
-- Mensagens de erro tratadas com `AlertDialog`  
-- Resultados de consultas exibidos em `TextArea`  
-- Campos de entrada são limpos após cada operação  
+Este projeto demonstra capacidade de **modelar soluções**, **aplicar fundamentos da computação** e **desenvolver aplicações desktop bem estruturadas**, sendo adequado para fins acadêmicos e apresentação profissional.
